@@ -1,0 +1,25 @@
+{% extends 'business/base.html' %}
+{% load bootstrap3 %}
+
+{% block page %}
+<div class="col-lg-offset-2 col-lg-8">
+  <div class="panel">
+    <div class="panel-heading bg-blue">
+      <h4 class="panel-title text-center text-white">
+        Edit Cargo: Edit the type of Cargo you would to Transport
+      </h4>
+    </div>
+    <div class="panel-body">
+      <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% bootstrap_form cargo_form %}
+      <button type="submit" class="btn btn-pink">Update</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+<a href="{% url 'business-cargo-add' %}">Add Cargo Page</a>
+<a href="{% url 'business-order' %}">Orders Page</a>
+<a href="{% url 'business-profile' %}">Business Profile</a>
+{% endblock%}

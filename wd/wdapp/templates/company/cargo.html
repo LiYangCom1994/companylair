@@ -1,0 +1,42 @@
+{% extends 'company/base.html' %}
+
+{% block page %}
+    <div class="panel">
+        <div class="panel-heading bg-blue">
+            <h4 class="panel-title text-center text-white">cargos</h4>
+        </div>
+        <div class="panel-body">
+            <div class="text-right">
+                <a href="{% url 'Business-add-cargo' %}" class="btn btn-pink">Add cargo</a>
+                <br/>
+                <br/>
+            </div>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr class="bg-gray text-white">
+                        <th>Id</th>
+                        <th>cargo</th>
+                        <th>Short Description</th>
+                        <th>Weight</th>
+                        <th class="text-center">Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cargo in cargos %}
+                    <tr>
+                        <td scope="row">{{ cargo.id }}</td>
+                        <td><a href="{% url 'Business-edit-cargo' cargo.cargo_id %}">{{ cargo.cargo}}</a></td>
+                        <td>{{ cargo.short_description }}</td>
+                        <td>{{ cargo.weight }}</td>
+                        <td class="text-center"><img class="img-rounded"
+                        src="{{ MEDIA_URL }}{{ cargo.image }}" width="50" height="50"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+{% endblock%}
